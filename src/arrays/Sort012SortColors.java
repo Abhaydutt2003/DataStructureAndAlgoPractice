@@ -19,18 +19,14 @@ public class Sort012SortColors {
 				nums[i] = temp;
 				nextTwo--;
 			}
-			for(int a = 0;a<nums.length;a++)
-				System.out.print(nums[a]+" ");
-				
-				System.out.println("");
 		}
 	}
 
 	public static void main(String[] args) {
 		int arr[] = {2,0,2,1,1,0};
 		sortColors(arr);
-//		for(int i = 0;i<arr.length;i++)
-//			System.out.print(arr[i] +" ");
+		for(int i = 0;i<arr.length;i++)
+			System.out.print(arr[i] +" ");
 		
 	}
 
