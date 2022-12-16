@@ -3,6 +3,7 @@ package linkedList;
 import java.util.Scanner;
 
 public class IntersectionLinkedList {
+	//intersection of two sorted linked list, not normal linked list
 	public static ListNode intersection(ListNode head,ListNode head2) {
 		if(head == null || head2 == null) {return null;}
 		ListNode newHead;
