@@ -18,7 +18,7 @@ public class FloorOfAnElement {
 		while(start<=end) {
 			mid = start + (end-start)/2;
 			if(arr[mid] == x) {
-				return (int)arr[mid];
+				return mid;
 			}else if (arr[mid]>x) {
 				end = mid-1;
 			}else {
