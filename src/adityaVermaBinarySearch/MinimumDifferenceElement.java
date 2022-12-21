@@ -18,7 +18,7 @@ public class MinimumDifferenceElement {
 		return Math.min(candidate2,Math.min(candidate1,candidate3));
 	}
 	private static int bs(int arr[],int target) {
-		int start = 0,end = arr.length-1,mid = 0,res = -1;
+		int start = 0,end = arr.length-1,mid = 0,res = 0;
 		while(start<=end) {
 			mid =start+(end-start)/2;
 			if(arr[mid] == target) {
