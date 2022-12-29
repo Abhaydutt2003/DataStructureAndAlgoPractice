@@ -30,7 +30,7 @@ public class MagneticForceBetweenTwoBalls {
 		for(int i = 1;i<arr.length;i++) {
 			if(arr[i]-arr[prev]>= mid) {
 				balls++;
-				//if(balls == limit) {return true;}
+				if(balls == limit) {return true;}
 				prev = i;
 			}
 		}
