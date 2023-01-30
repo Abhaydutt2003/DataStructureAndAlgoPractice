@@ -40,15 +40,24 @@ public class DistributeCoinsInBinaryTree {
 	}
 	static int moves = 0;
 	public static int distributeCoins(TreeNode root) {
-		getAnswer(root);
+		getAnswer2(root);
 		return moves;
 	}
-	private static int[] getAnswer(TreeNode root) {
+	public static int[] getAnswer(TreeNode root) {
 		if(root == null) {return new int[] {0,0};}
 		int[] left = getAnswer(root.left);
 		int [] right = getAnswer(root.right);
 		moves = moves + Math.abs(left[0]-left[1])+Math.abs(right[0]-right[1]);
 		int toReturn[] = {left[0]+right[0]+1,left[1]+right[1]+root.val};
+		return toReturn;
+	}
+	
+	public static int getAnswer2(TreeNode root){
+		if(root == null){return 0;}
+		int left = getAnswer2(root.left);
+		int right = getAnswer2(root.right);
+		moves += Math.abs(left)+Math.abs(right);
+		int toReturn = left+right+(root.val-1);
 		return toReturn;
 	}
 
