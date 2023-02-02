@@ -54,7 +54,7 @@ public class InorderTraversal {
 	}
 	static List<Integer> inorder = new LinkedList<Integer>() ;
 	public static List<Integer> inorderTraversal(TreeNode root){
-		helper(root);return inorder;
+		traversalMorris(root);return inorder;
 	}
 	public static void helper(TreeNode root) {
 		if(root == null) {return;}
@@ -69,6 +69,29 @@ public class InorderTraversal {
 		List<Integer> nodes = inorderTraversal(root);
 		for(int i :nodes) {System.out.print(i+" ");}
 
+	}
+	public static void traversalMorris(TreeNode root){
+		TreeNode current = root;
+		TreeNode prev;
+		while(current!=null){
+			if(current.left == null){
+				inorder.add(current.val);
+				current = current.right;
+			}else{
+				prev = current.left;
+				while(prev.right!=null && prev.right!=current){
+					prev = prev.right;
+				}
+				if(prev.right == null){
+					prev.right = current;
+					current = current.left;
+				}else{
+					inorder.add(current.val);
+					prev.right = null;
+					current = current.right;
+				}
+			}
+		}
 	}
 
 }
