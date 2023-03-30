@@ -15,5 +15,21 @@ public class BestTimeToBuyAndSellStock {
         rec(arr,N-1,max);
     }
 
+    //better iterative code..
+    public static int maxProfit(int[] prices){
+        int maxTillNow = Integer.MIN_VALUE;
+        int ans = Integer.MIN_VALUE;
+        for(int i = prices.length-1;i>=0;i--){
+            if(prices[i]>maxTillNow){
+                maxTillNow = prices[i];
+            }else{
+                int temp = maxTillNow-prices[i];
+                ans = Math.max(ans, temp);
+            }
+        }
+        if(ans == Integer.MIN_VALUE){return 0;}
+        return ans;
+    }
+
     
 }
