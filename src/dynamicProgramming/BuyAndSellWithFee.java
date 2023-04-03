@@ -73,5 +73,18 @@ public class BuyAndSellWithFee {
     }
 
     //best approach
-    
+    //this is literally dp ka tabulation in concise way
+
+    public static int util3(int prices[], int fee){
+        int prevBuy = prices[0] * -1;
+        int prevSell = 0;
+        for(int i = 1;i<prices.length;i++){
+            int currentSell = Math.max(prevBuy+ prices[i]-fee, prevSell);
+            int currentBuy = Math.max(prevSell-prices[i], prevBuy);
+            prevBuy = currentBuy;
+            prevSell = currentSell;
+        }
+        return prevSell;
+    }
 }
+
