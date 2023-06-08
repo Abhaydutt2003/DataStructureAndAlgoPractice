@@ -15,8 +15,8 @@ class lc32Helper {
 public class LongestValidParentheses {
 
     public static void main(String agrs[]) {
-        String str = ")(";
-        System.out.print(util2(str));
+        String str = ")()()(";
+        System.out.print(util3(str));
     }
 
     static int dp[];
@@ -97,6 +97,24 @@ public class LongestValidParentheses {
         return ans;
     }
 
-    //modification of my dp approach
+    public static int util3(String str) {
+        int ans = 0;
+        Stack<Integer> s = new Stack<>();
+        s.push(-1);
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '(') {
+                s.push(i);
+            } else {
+                s.pop();
+                if (s.isEmpty() == true) {
+                    s.push(i);
+                } else {
+                    int smallAns = i - s.peek();
+                    ans = Math.max(ans, smallAns);
+                }
+            }
+        }
+        return ans;
+    }
 
 }
