@@ -17,7 +17,7 @@ public class WordBreak {
         l.add("a");
         l.add("bh");
         l.add("ay");
-        System.out.print(util1(str, l));
+        System.out.print(util2(str, l));
     }
 
     static HashSet<String> hs;
@@ -80,6 +80,43 @@ public class WordBreak {
                 ans = true;
             }
         }
+        return ans;
+    }
+
+    // approach 2
+    // call right only if left is correct
+    static HashMap<String, Boolean> hm;
+
+    public static boolean util2(String str, List<String> dict) {
+        hs = new HashSet<>();
+        hm = new HashMap<>();
+        for (String s : dict) {
+            hs.add(s);
+        }
+        return check2(str);
+    }
+
+    public static boolean check2(String str) {
+        if (str.equals("")) {
+            return true;
+        }
+        if (hm.containsKey(str)) {
+            return hm.get(str);
+        }
+        if (hs.contains(str)) {
+            return true;
+        }
+        boolean ans = false;
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (hs.contains(str.substring(0, i + 1))) {
+                boolean smallAns = check2(str.substring(i + 1));
+                if (smallAns) {
+                    ans = true;
+                    break;
+                }
+            }
+        }
+        hm.put(str, ans);
         return ans;
     }
 
