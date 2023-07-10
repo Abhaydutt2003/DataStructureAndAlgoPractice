@@ -26,4 +26,28 @@ public class MinimumDepth {
             return helper(root.left) + 1;
         }
     }
+
+    public static int bfs(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<>();
+        int depth = 0;
+        q.add(root);
+        while (q.isEmpty() == false) {
+            int size = q.size();
+            while (size > 0) {
+                TreeNode current = q.poll();
+                size--;
+                if (current.left == null && current.right == null) {
+                    return depth;
+                }
+                if (current.left != null) {
+                    q.add(current.left);
+                }
+                if (current.right == null) {
+                    q.add(current.right);
+                }
+            }
+            depth++;
+        }
+        return -1;
+    }
 }
