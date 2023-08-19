@@ -42,4 +42,29 @@ public class MaximalNetworkRank {
         return ans;
     }
 
+    // using adj matrix
+    public static int util2(int n, int roads[][]) {
+        // construct indegree and graph
+        int adjMatrix[][] = new int[n][n];
+        int indegree[] = new int[n];
+        for (int i = 0; i < roads.length; i++) {
+            adjMatrix[roads[i][0]][roads[i][1]] = 1;
+            adjMatrix[roads[i][1]][roads[i][0]] = 1;
+            indegree[roads[i][0]]++;
+            indegree[roads[i][1]]++;
+        }
+        // now traverse for all the pairs
+        int ans = 0;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                int candidate = indegree[i] + indegree[j];
+                if (adjMatrix[i][j] == 1) {
+                    candidate--;
+                }
+                ans = Math.max(ans, candidate);
+            }
+        }
+        return ans;
+    }
+
 }
