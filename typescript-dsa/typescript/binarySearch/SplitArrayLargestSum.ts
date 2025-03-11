@@ -2,7 +2,7 @@
 
 
 function splitArray(nums: number[], k: number): number {
-    
+    return 1;
 };
 
 let nums = [7,2,5,10,8], k = 2;
